@@ -18,11 +18,6 @@ tar -xf ./mednafen.tar.xz
 (
 	cd ./mednafen
 
-	# backport fix from aur package
-	sed -i \
-	  "s/virtual auto saveName() -> string { return pak->attribute(\"name\"); }/virtual auto saveName() -> string { return name(); }/g" \
-	  ./mia/pak/pak.hpp
-
 	./configure
 	make
 	make install --prefix="/usr"
