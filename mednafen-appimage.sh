@@ -32,18 +32,15 @@ rm -rf ./mednafen
 URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
 SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
-cp mednafen.desktop /usr/share/applications/mednafen.desktop
 export ADD_HOOKS="self-updater.bg.hook"
 export OUTNAME=mednafen-"$VERSION"-anylinux-"$ARCH".AppImage
 export DESKTOP=/usr/share/applications/mednafen.desktop
-# export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
+export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
 export DEPLOY_OPENGL=1 
 export DEPLOY_PIPEWIRE=1
 
-# "fix" xvfb-run failing to kill the process in aarch64
-if [ "$ARCH" = "aarch64" ]; then
-	sed -i 's#kill $XVFBPID#kill $XVFBPID || true#' "$(command -v xvfb-run)"
-fi
+cp mednafen.desktop $DESKTOP
+cp mednafen.png $ICON
 
 # ADD LIBRARIES
 wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
