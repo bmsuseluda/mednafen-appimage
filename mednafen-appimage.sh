@@ -15,7 +15,7 @@ tar -xf ./mednafen.tar.xz
 	cd ./mednafen
 
 	./configure --prefix="/usr"
-	make
+	make -j"$(nproc)"
 	make install
 	make installcheck
 	make clean
