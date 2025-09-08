@@ -18,7 +18,7 @@ tar -xf ./mednafen.tar.xz
 (
 	cd ./mednafen
 
-	./configure
+	./configure --prefix="/usr"
 	make
 	make install
 	make installcheck

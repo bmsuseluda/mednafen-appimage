@@ -2,7 +2,7 @@
 <component type="desktop-application">
     <id>net.mednafen.emu</id>
     <metadata_license>GPL2</metadata_license>
-    <project_license>ISC</project_license>
+    <project_license>GPL2</project_license>
     <name>Mednafen</name>
     <summary>Mednafen is a portable, utilizing OpenGL and SDL, argument(command-line)-driven multi-system emulator</summary>
     <description>
