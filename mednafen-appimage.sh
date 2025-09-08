@@ -2,7 +2,7 @@
 
 set -ex
 ARCH="$(uname -m)"
-REPO="https://mednafen.github.io/releases/files/mednafen-1.32.1.tar.xz"
+SOURCE="https://mednafen.github.io/releases/files/mednafen-1.32.1.tar.xz"
 GRON="https://raw.githubusercontent.com/xonixx/gron.awk/refs/heads/main/gron.awk"
 
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
@@ -10,7 +10,9 @@ wget "$GRON" -O ./gron.awk
 chmod +x ./gron.awk
 VERSION=1.32.1
 
-tar -xf "$REPO"
+wget "$SOURCE" -O ./mednafen.tar.xz
+
+tar -xf ./mednafen.tar.xz
 
 # BUILD mednafen
 (
