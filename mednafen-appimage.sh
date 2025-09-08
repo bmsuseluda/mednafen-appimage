@@ -2,16 +2,12 @@
 
 set -ex
 ARCH="$(uname -m)"
-SOURCE="https://mednafen.github.io/releases/files/mednafen-1.32.1.tar.xz"
-GRON="https://raw.githubusercontent.com/xonixx/gron.awk/refs/heads/main/gron.awk"
+SOURCE=$(wget -q https://mednafen.github.io -O - | sed 's/[()",{} ]/\n/g' | grep -oi "https.*files.*xz$" \
+	| head -1 | python -c 'import sys,html;print(html.unescape(sys.stdin.read()), end="")')
 
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-wget "$GRON" -O ./gron.awk
-chmod +x ./gron.awk
-VERSION=1.32.1
 
 wget "$SOURCE" -O ./mednafen.tar.xz
-
 tar -xf ./mednafen.tar.xz
 
 # BUILD mednafen
@@ -19,13 +15,14 @@ tar -xf ./mednafen.tar.xz
 	cd ./mednafen
 
 	./configure --prefix="/usr"
-	make
+	make -j"$(nproc)"
 	make install
 	make installcheck
 	make clean
 	make distclean
 )
-rm -rf ./mednafen
+rm -rf ./mednafen ./mednafen.tar.xz
+VERSION="$(mednafen 2>/dev/null | awk '{print $3; exit}')"
 [ -n "$VERSION" ] && echo "$VERSION" > ~/version
 
 # NOW MAKE APPIMAGE
@@ -34,18 +31,15 @@ SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/h
 
 export ADD_HOOKS="self-updater.bg.hook"
 export OUTNAME=mednafen-"$VERSION"-anylinux-"$ARCH".AppImage
-export DESKTOP=/usr/share/applications/mednafen.desktop
-export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
+export DESKTOP="$PWD"/mednafen.desktop
+export ICON="$PWD"/mednafen.png
 export DEPLOY_OPENGL=1 
 export DEPLOY_PIPEWIRE=1
-
-cp mednafen.desktop $DESKTOP
-cp mednafen.png $ICON
 
 # ADD LIBRARIES
 wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
-./quick-sharun /usr/bin/mednafen /usr/bin/sourcery
+./quick-sharun /usr/bin/mednafen
 
 # turn appdir into appimage
 wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
@@ -54,5 +48,6 @@ chmod +x ./uruntime2appimage
 
 mkdir -p ./dist
 mv -v ./*.AppImage* ./dist
+mv -v ~/version     ./dist
 
 echo "All Done!"
