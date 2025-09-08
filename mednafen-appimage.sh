@@ -20,7 +20,7 @@ tar -xf ./mednafen.tar.xz
 
 	./configure
 	make
-	make install --prefix="/usr"
+	make install
 	make installcheck
 	make clean
 	make distclean
