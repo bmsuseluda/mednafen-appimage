@@ -32,9 +32,10 @@ rm -rf ./mednafen
 URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
 SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
+cp mednafen.desktop /usr/share/applications/mednafen.desktop
 export ADD_HOOKS="self-updater.bg.hook"
 export OUTNAME=mednafen-"$VERSION"-anylinux-"$ARCH".AppImage
-# export DESKTOP=/usr/share/applications/mednafen.desktop
+export DESKTOP=/usr/share/applications/mednafen.desktop
 # export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
 export DEPLOY_OPENGL=1 
 export DEPLOY_PIPEWIRE=1
