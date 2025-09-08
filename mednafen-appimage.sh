@@ -34,8 +34,8 @@ SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/h
 
 export ADD_HOOKS="self-updater.bg.hook"
 export OUTNAME=mednafen-"$VERSION"-anylinux-"$ARCH".AppImage
-export DESKTOP=/usr/share/applications/mednafen.desktop
-export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
+# export DESKTOP=/usr/share/applications/mednafen.desktop
+# export ICON=/usr/share/icons/hicolor/256x256/apps/mednafen.png
 export DEPLOY_OPENGL=1 
 export DEPLOY_PIPEWIRE=1
 

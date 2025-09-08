@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Icon=mednafen
+Exec=mednafen
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Name=Mednafen Emulator
+GenericName=Multi-system Emulator
+Comment=A multi-system Emulator
