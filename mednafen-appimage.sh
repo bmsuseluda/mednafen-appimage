@@ -48,5 +48,6 @@ chmod +x ./uruntime2appimage
 
 mkdir -p ./dist
 mv -v ./*.AppImage* ./dist
+mv -v ~/version     ./dist
 
 echo "All Done!"
