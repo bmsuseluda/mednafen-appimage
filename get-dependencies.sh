@@ -22,6 +22,7 @@ pacman -Syu --noconfirm \
 	openal             \
 	pipewire-audio     \
 	pkgconf            \
+	python             \
 	pulseaudio         \
 	pulseaudio-alsa    \
 	sdl2               \
