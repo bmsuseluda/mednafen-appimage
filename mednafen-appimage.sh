@@ -39,7 +39,7 @@ export DEPLOY_PIPEWIRE=1
 # ADD LIBRARIES
 wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
 chmod +x ./quick-sharun
-./quick-sharun /usr/bin/mednafen
+./quick-sharun /usr/bin/mednafen /usr/lib/libdecor/*/*
 
 # turn appdir into appimage
 wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
