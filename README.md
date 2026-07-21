@@ -1,13 +1,13 @@
 <div align="center">
 
-# Mednafen AppImage 🐧
+# Mednafen-AppImage 🐧
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/mednafen-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/mednafen-appimage/releases/latest)
 [![CI Build Status](https://github.com/pkgforge-dev/mednafen-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/pkgforge-dev/mednafen-appimage/releases/latest)
 [![Latest Stable Release](https://img.shields.io/github/v/release/pkgforge-dev/mednafen-appimage)](https://github.com/pkgforge-dev/mednafen-appimage/releases/latest)
 
 <p align="center">
-  <img src="https://mednafen.github.io/newlogo.png" width="128" />
+  <img src="https://github.com/Samueru-sama/mednafen-appimage/blob/main/AppDir/mednafen.png" width="128" />
 </p>
 
 | Latest Stable Release | Upstream URL |
